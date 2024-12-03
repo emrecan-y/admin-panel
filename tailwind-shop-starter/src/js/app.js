@@ -41,5 +41,5 @@ function injectProducts(htmlFile, element) {
 }
 
 // Inject the header
-injectHTML("components/header/header.html", "#header");
+injectHTML("components/nav/nav.html", "#nav");
 injectProducts("components/products/products.html", "#products");
