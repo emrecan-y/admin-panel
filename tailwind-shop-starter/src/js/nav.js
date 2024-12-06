@@ -1,34 +1,47 @@
-let burgerButton = document.getElementById("nav-burger-btn");
 let navLabels = document.getElementsByClassName("nav-labels");
+let navToggleUserOverride = false;
 
-export function initNav(breakpoints) {
-  burgerButton = document.getElementById("nav-burger-btn");
+export function initNav(initNavProps) {
+  const burgerButton = document.getElementById("nav-burger-btn");
+  burgerButton.addEventListener("click", burgerButtonEventListener);
+
+  const userButton = document.getElementById("nav-user-btn");
+  userButton.addEventListener("click", initNavProps.injectUserView);
+
+  const dashboardButton = document.getElementById("nav-dashboard-btn");
+  dashboardButton.addEventListener("click", initNavProps.injectDashboard);
+
+  const productAddButton = document.getElementById("nav-product-add-btn");
+  productAddButton.addEventListener(
+    "click",
+    initNavProps.injectProductDetailView,
+  );
+
+  const productShowButton = document.getElementById("nav-product-show-btn");
+  productShowButton.addEventListener("click", initNavProps.injectProductList);
+
   navLabels = document.getElementsByClassName("nav-labels");
-  burgerButton.addEventListener("click", toggleNavWidth);
-  navEventListenerResize(breakpoints);
+  navEventListenerResize(initNavProps.breakpoints);
 }
 
 export function navEventListenerResize(breakpoints) {
-  console.log(navLabels.length);
   if (navLabels.length > 0) {
     const currentWidth = document.documentElement.clientWidth;
-    const isHidden = navLabels[0].classList.contains("hidden");
     const isDefault = currentWidth < breakpoints.sm;
     const isTablet = currentWidth < breakpoints.lg;
     const isDesktop = currentWidth > breakpoints.lg;
     if (isDefault) {
-      console.log("test");
+      navToggleUserOverride = false;
       showLabels();
     } else if (isTablet) {
+      navToggleUserOverride = false;
       hideLabels();
-    } else if (isDesktop) {
-      showLabels();
     }
   }
 }
 
 export function hideLabels() {
-  if (navLabels.length > 0) {
+  if (navLabels.length > 0 && !navToggleUserOverride) {
     for (let label of navLabels) {
       label.classList.add("hidden");
     }
@@ -43,13 +56,12 @@ export function showLabels() {
   }
 }
 
-function toggleNavWidth() {
-  const isHidden = navLabels[0].classList.contains("hidden");
-  for (let label of navLabels) {
-    if (isHidden) {
-      label.classList.remove("hidden");
-    } else {
-      label.classList.add("hidden");
-    }
+function burgerButtonEventListener() {
+  if (!navLabels[0].classList.contains("hidden")) {
+    navToggleUserOverride = false;
+    hideLabels();
+  } else {
+    navToggleUserOverride = true;
+    showLabels();
   }
 }

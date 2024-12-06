@@ -1,13 +1,13 @@
 import { initNav, navEventListenerResize } from "./nav.js";
 import { initProducts } from "./products.js";
+import { initDashboard } from "./dashboard.js";
+import { initProductCreation, initProductEdit } from "./product-detail.js";
 
 const breakpoints = {
   sm: 640,
   md: 768,
   lg: 1024,
 };
-
-window.addEventListener("resize", () => navEventListenerResize(breakpoints));
 
 /**
  * Injects HTML from a file into an element
@@ -25,6 +25,43 @@ function injectHTML(htmlFile, element) {
     });
 }
 
-// Inject the header
-injectHTML("components/nav/nav.html", "#nav").then(() => initNav(breakpoints));
-injectHTML("components/products/products.html", "#products").then(initProducts);
+function injectProductList() {
+  injectHTML("components/products/products.html", "#main-content").then(() =>
+    initProducts(injectProductEditView),
+  );
+}
+
+function injectProductEditView(productId) {
+  injectHTML("components/products/product-detail.html", "#main-content").then(
+    () => initProductEdit(productId),
+  );
+}
+
+function injectProductDetailView() {
+  injectHTML("components/products/product-detail.html", "#main-content").then(
+    initProductCreation,
+  );
+}
+
+function injectDashboard() {
+  injectHTML("components/dashboard/dashboard.html", "#main-content").then(
+    initDashboard,
+  );
+}
+
+function injectUserView() {
+  injectHTML("components/user/user.html", "#main-content").then();
+}
+
+injectHTML("components/nav/nav.html", "#nav").then(() =>
+  initNav({
+    breakpoints,
+    injectDashboard,
+    injectProductList,
+    injectUserView,
+    injectProductDetailView,
+  }),
+);
+
+window.addEventListener("resize", () => navEventListenerResize(breakpoints));
+injectDashboard();

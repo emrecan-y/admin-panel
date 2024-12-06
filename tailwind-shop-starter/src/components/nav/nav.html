@@ -1,54 +1,64 @@
 <div
   class="absolute bottom-0 left-0 flex w-screen items-center justify-around bg-nav p-2 text-white sm:top-0 sm:h-screen sm:w-max sm:flex-col sm:items-start sm:justify-start"
 >
-  <div class="hidden items-center sm:flex sm:flex-row">
+  <div
+    id="nav-burger-btn"
+    class="hidden w-10 cursor-pointer flex-col items-center rounded-md sm:my-4 sm:flex sm:w-max sm:flex-row sm:p-1 sm:hover:bg-accent-dark"
+  >
     <img
-      id="nav-burger-btn"
-      class="w-10 cursor-pointer rounded-md hover:bg-accent-dark sm:block sm:w-12 sm:p-1"
+      class="w-8 sm:w-10"
       src="../resources/icons/hamburger-menu.png"
       alt="burger-menu icon"
     />
-    <p class="nav-labels hidden text-xs sm:pl-2 sm:text-lg"></p>
+    <p class="hidden text-xs sm:pl-2 sm:pr-1 sm:text-lg"></p>
   </div>
   <div
-    class="flex w-10 cursor-pointer flex-col items-center rounded-md hover:bg-accent-dark sm:mt-7 sm:w-max sm:flex-row sm:p-1"
+    id="nav-user-btn"
+    class="flex w-10 cursor-pointer flex-col items-center rounded-md sm:my-4 sm:w-max sm:flex-row sm:p-1 sm:hover:bg-accent-dark"
   >
     <img
       class="w-8 sm:w-10"
       src="../resources/icons/user-icon.png"
       alt="user icon"
     />
-    <p class="nav-labels hidden text-xs sm:pl-2 sm:text-lg">Admin</p>
+    <p class="nav-labels hidden text-xs sm:pl-2 sm:pr-1 sm:text-lg">Admin</p>
   </div>
   <div
-    class="flex w-10 cursor-pointer flex-col items-center rounded-md hover:bg-accent-dark sm:mt-7 sm:w-max sm:flex-row sm:p-1"
+    id="nav-dashboard-btn"
+    class="flex w-10 cursor-pointer flex-col items-center rounded-md sm:mt-4 sm:w-max sm:flex-row sm:p-1 sm:hover:bg-accent-dark"
   >
     <img
       class="w-8 sm:w-10"
       src="../resources/icons/dashboard-icon.png"
       alt="dashboard icon"
     />
-    <p class="nav-labels hidden text-xs sm:pl-2 sm:text-lg">Dashboard</p>
+    <p class="nav-labels hidden text-xs sm:pl-2 sm:pr-1 sm:text-lg">
+      Dashboard
+    </p>
   </div>
   <div
-    class="flex w-10 cursor-pointer flex-col items-center rounded-md hover:bg-accent-dark sm:mt-3 sm:w-max sm:flex-row sm:p-1"
+    id="nav-product-add-btn"
+    class="flex w-10 cursor-pointer flex-col items-center rounded-md sm:mt-3 sm:w-max sm:flex-row sm:p-1 sm:hover:bg-accent-dark"
   >
     <img
       class="w-8 sm:w-10"
       src="../resources/icons/add-icon.png"
       alt="add-product icon"
     />
-    <p class="nav-labels hidden text-xs sm:pl-2 sm:text-lg">Produkt anlegen</p>
+    <p class="nav-labels hidden text-xs sm:pl-2 sm:pr-1 sm:text-lg">
+      Produkt anlegen
+    </p>
   </div>
   <div
-    class="flex w-10 cursor-pointer flex-col items-center rounded-md hover:bg-accent-dark sm:mt-3 sm:w-max sm:flex-row sm:p-1"
+    id="nav-product-show-btn"
+    class="flex w-10 cursor-pointer flex-col items-center rounded-md sm:mt-3 sm:w-max sm:flex-row sm:p-1 sm:hover:bg-accent-dark"
   >
     <img
       class="w-8 sm:w-10"
       src="../resources/icons/edit-icon.png"
       alt="edit-products icon"
     />
-    <p class="nav-labels hidden text-xs sm:pl-2 sm:text-lg">
+    <p class="nav-labels hidden text-xs sm:pl-2 sm:pr-1 sm:text-lg">
       Produkte verwalten
     </p>
   </div>
