@@ -1,0 +1,53 @@
+<div class="grid h-auto max-w-lg grid-cols-5 bg-nav px-2 py-3">
+  <div class="col-span-3 flex flex-col justify-start p-1">
+    <label class="pl-1 text-lg" for="product-detail-name">Name</label>
+    <input
+      class="mr-2 bg-table-dark p-1"
+      type="text"
+      name="name"
+      id="product-detail-name"
+    />
+  </div>
+  <div class="col-span-2 ml-2 flex flex-col justify-start p-1">
+    <label class="pl-1 text-lg" for="product-detail-price">Preis</label>
+    <input
+      class="bg-table-dark p-1"
+      type="number"
+      name="price"
+      id="product-detail-price"
+    />
+  </div>
+  <div class="col-span-5 flex flex-col justify-start p-1">
+    <label class="pl-1 text-lg" for="product-detail-desc">Beschreibung</label>
+    <textarea
+      class="h-72 bg-table-dark p-1 align-top"
+      type="text"
+      name="description"
+      id="product-detail-desc"
+    ></textarea>
+  </div>
+  <div class="col-span-5 my-2 flex h-9 justify-end">
+    <div
+      id="product-cancel-btn"
+      class="flex w-fit items-center justify-around rounded-md p-0.5 sm:hover:bg-accent-dark"
+    >
+      <img
+        class="h-[90%]"
+        src="../resources/icons/delete-icon.png"
+        alt="cancel-button"
+      />
+      <p class="text-lg">Verwerfen</p>
+    </div>
+    <div
+      id="product-confirm-btn"
+      class="ml-3 flex w-max items-center justify-around rounded-md p-0.5 sm:hover:bg-accent-dark"
+    >
+      <img
+        class="h-full"
+        src="../resources/icons/save-icon.png"
+        alt="confirm-button"
+      />
+      <p class="text-lg">Speichern</p>
+    </div>
+  </div>
+</div>
