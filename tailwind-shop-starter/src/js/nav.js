@@ -14,7 +14,7 @@ export function initNav(initNavProps) {
   const productAddButton = document.getElementById("nav-product-add-btn");
   productAddButton.addEventListener(
     "click",
-    initNavProps.injectProductDetailView,
+    initNavProps.injectProductCreationView,
   );
 
   const productShowButton = document.getElementById("nav-product-show-btn");

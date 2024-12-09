@@ -1,4 +1,5 @@
 import { getProducts, deleteProduct } from "./api.js";
+import { initConfirm } from "./confirm.js";
 
 export async function initProducts(injectProductEditView) {
   const products = await getProducts();
@@ -12,8 +13,14 @@ function addEventListenerToButtons(injectProductEditView) {
 
   for (let button of deleteButtons) {
     const productId = parseInt(button.id.replace("delete-btn-", ""));
-    button.addEventListener("click", () =>
-      deleteButonEventListener(productId, injectProductEditView),
+    button.addEventListener("click", (event) =>
+      initConfirm(
+        "Löschen?",
+        event.x,
+        event.y,
+        () => deleteButonEventListener(productId, injectProductEditView),
+        null,
+      ),
     );
   }
 

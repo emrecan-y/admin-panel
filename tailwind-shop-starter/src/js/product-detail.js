@@ -1,49 +1,62 @@
 import { getProductById, updateProduct, createProduct } from "./api.js";
 
-// -1 means compnent is used for product creation
-// everything else for product editing
-let currentProducttId = -1;
-
-export async function initProductEdit(productId) {
-  currentProducttId = productId;
+export async function initProductEdit(productId, injectProductList) {
   const product = await getProductById(productId);
-  console.log(product);
   document.getElementById("product-detail-name").value = product.name;
   document.getElementById("product-detail-price").value = product.price;
   document.getElementById("product-detail-desc").value = product.description;
-  initButtons();
-}
 
-export function initProductCreation() {
-  currentProducttId = -1;
-  initButtons();
-}
+  document.querySelector("#product-cancel-btn p").innerText = "Abbrechen";
+  document.querySelector("#product-confirm-btn p").innerText = "Speichern";
 
-function initButtons() {
   const cancelButton = document.getElementById("product-cancel-btn");
+  cancelButton.addEventListener("click", () =>
+    cancelButtonEditHandler(injectProductList),
+  );
+
   const confirmButton = document.getElementById("product-confirm-btn");
-  if (currentProducttId == -1) {
-    confirmButton, addEventListener("click", createButtonHandler);
-  } else {
-    confirmButton.addEventListener("click", () => updateButtonHandler());
-  }
+  confirmButton.addEventListener("click", () =>
+    confirmButtonEditHandler(product, injectProductList),
+  );
 }
 
-function updateButtonHandler() {
-  let updatedProduct = {};
-  updatedProduct.id = currentProducttId;
-  updatedProduct.name = document.getElementById("product-detail-name").value;
-  updatedProduct.price = document.getElementById("product-detail-price").value;
-  updatedProduct.description = document.getElementById(
-    "product-detail-desc",
-  ).value;
-  updateProduct(updatedProduct);
+export function initProductCreation(injectProductList) {
+  document.querySelector("#product-cancel-btn p").innerText = "Verwerfen";
+  document.querySelector("#product-confirm-btn p").innerText = "Erstellen";
+
+  const cancelButton = document.getElementById("product-cancel-btn");
+  cancelButton.addEventListener("click", cancelButtonCreationHandler);
+
+  const confirmButton = document.getElementById("product-confirm-btn");
+  confirmButton.addEventListener("click", () =>
+    confirmButtonCreationtHandler(injectProductList),
+  );
 }
 
-function createButtonHandler() {
+async function confirmButtonEditHandler(product, injectProductList) {
+  product.name = document.getElementById("product-detail-name").value;
+  product.price = document.getElementById("product-detail-price").value;
+  product.description = document.getElementById("product-detail-desc").value;
+  await updateProduct(product);
+  injectProductList();
+}
+
+async function cancelButtonEditHandler(injectProductList) {
+  injectProductList();
+}
+
+async function confirmButtonCreationtHandler(injectProductList) {
   let newProduct = {};
+  console.log("s");
   newProduct.name = document.getElementById("product-detail-name").value;
   newProduct.price = document.getElementById("product-detail-price").value;
   newProduct.description = document.getElementById("product-detail-desc").value;
-  createProduct(newProduct);
+  await createProduct(newProduct);
+  injectProductList();
+}
+
+async function cancelButtonCreationHandler() {
+  document.getElementById("product-detail-name").value = "";
+  document.getElementById("product-detail-price").value = "";
+  document.getElementById("product-detail-desc").value = "";
 }

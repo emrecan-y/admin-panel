@@ -2,6 +2,7 @@ import { initNav, navEventListenerResize } from "./nav.js";
 import { initProducts } from "./products.js";
 import { initDashboard } from "./dashboard.js";
 import { initProductCreation, initProductEdit } from "./product-detail.js";
+import { initConfirm } from "./confirm.js";
 
 const breakpoints = {
   sm: 640,
@@ -33,13 +34,13 @@ function injectProductList() {
 
 function injectProductEditView(productId) {
   injectHTML("components/products/product-detail.html", "#main-content").then(
-    () => initProductEdit(productId),
+    () => initProductEdit(productId, injectProductList),
   );
 }
 
-function injectProductDetailView() {
+function injectProductCreationView() {
   injectHTML("components/products/product-detail.html", "#main-content").then(
-    initProductCreation,
+    () => initProductCreation(injectProductList),
   );
 }
 
@@ -59,7 +60,7 @@ injectHTML("components/nav/nav.html", "#nav").then(() =>
     injectDashboard,
     injectProductList,
     injectUserView,
-    injectProductDetailView,
+    injectProductCreationView,
   }),
 );
 
