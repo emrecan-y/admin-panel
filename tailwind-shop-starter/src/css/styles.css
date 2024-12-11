@@ -984,6 +984,30 @@ input[type="number"]::-webkit-outer-spin-button,
   border-right-width: 15px;
 }
 
+.border-l-\[15px\] {
+  border-left-width: 15px;
+}
+
+.border-b-\[15px\] {
+  border-bottom-width: 15px;
+}
+
+.border-l-\[10px\] {
+  border-left-width: 10px;
+}
+
+.border-l-\[12px\] {
+  border-left-width: 12px;
+}
+
+.border-r-\[12px\] {
+  border-right-width: 12px;
+}
+
+.border-b-\[20px\] {
+  border-bottom-width: 20px;
+}
+
 .border-solid {
   border-style: solid;
 }
@@ -1020,6 +1044,16 @@ input[type="number"]::-webkit-outer-spin-button,
 .border-r-accent-dark {
   --tw-border-opacity: 1;
   border-right-color: rgb(124 48 156 / var(--tw-border-opacity, 1));
+}
+
+.border-l-accent-dark {
+  --tw-border-opacity: 1;
+  border-left-color: rgb(124 48 156 / var(--tw-border-opacity, 1));
+}
+
+.border-b-accent-dark {
+  --tw-border-opacity: 1;
+  border-bottom-color: rgb(124 48 156 / var(--tw-border-opacity, 1));
 }
 
 .bg-nav {

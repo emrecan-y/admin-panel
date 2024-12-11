@@ -16,8 +16,7 @@ function addEventListenerToButtons(injectProductEditView) {
     button.addEventListener("click", (event) =>
       initConfirm(
         "Löschen?",
-        event.x,
-        event.y,
+        event.target,
         () => deleteButonEventListener(productId, injectProductEditView),
         null,
       ),
