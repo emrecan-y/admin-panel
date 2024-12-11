@@ -799,6 +799,10 @@ input[type="number"]::-webkit-outer-spin-button,
   width: 0px;
 }
 
+.w-10\/12 {
+  width: 83.333333%;
+}
+
 .min-w-full {
   min-width: 100%;
 }
@@ -829,6 +833,11 @@ input[type="number"]::-webkit-outer-spin-button,
 
 .max-w-lg {
   max-width: 32rem;
+}
+
+.max-w-fit {
+  max-width: -moz-fit-content;
+  max-width: fit-content;
 }
 
 @keyframes ping {
@@ -936,6 +945,25 @@ input[type="number"]::-webkit-outer-spin-button,
   border-width: 4px;
 }
 
+.border-8 {
+  border-width: 8px;
+}
+
+.border-y-2 {
+  border-top-width: 2px;
+  border-bottom-width: 2px;
+}
+
+.border-x-2 {
+  border-left-width: 2px;
+  border-right-width: 2px;
+}
+
+.border-x-4 {
+  border-left-width: 4px;
+  border-right-width: 4px;
+}
+
 .border-b-2 {
   border-bottom-width: 2px;
 }
@@ -1008,6 +1036,14 @@ input[type="number"]::-webkit-outer-spin-button,
   border-bottom-width: 20px;
 }
 
+.border-b-4 {
+  border-bottom-width: 4px;
+}
+
+.border-r-4 {
+  border-right-width: 4px;
+}
+
 .border-solid {
   border-style: solid;
 }
@@ -1029,6 +1065,11 @@ input[type="number"]::-webkit-outer-spin-button,
 .border-accent-dark {
   --tw-border-opacity: 1;
   border-color: rgb(124 48 156 / var(--tw-border-opacity, 1));
+}
+
+.border-nav {
+  --tw-border-opacity: 1;
+  border-color: rgb(33 33 33 / var(--tw-border-opacity, 1));
 }
 
 .border-r-blue-500 {
@@ -1116,6 +1157,11 @@ input[type="number"]::-webkit-outer-spin-button,
   background-color: rgb(124 48 156 / 0.1);
 }
 
+.bg-red-400 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(248 113 113 / var(--tw-bg-opacity, 1));
+}
+
 .p-0\.5 {
   padding: 0.125rem;
 }
@@ -1138,6 +1184,10 @@ input[type="number"]::-webkit-outer-spin-button,
 
 .p-0 {
   padding: 0px;
+}
+
+.p-5 {
+  padding: 1.25rem;
 }
 
 .py-2 {
@@ -1163,6 +1213,21 @@ input[type="number"]::-webkit-outer-spin-button,
 .py-3 {
   padding-top: 0.75rem;
   padding-bottom: 0.75rem;
+}
+
+.py-8 {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+.px-1 {
+  padding-left: 0.25rem;
+  padding-right: 0.25rem;
+}
+
+.px-3 {
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
 }
 
 .pl-1 {
@@ -1325,5 +1390,16 @@ input[type="number"]::-webkit-outer-spin-button,
   .sm\:hover\:bg-accent-dark:hover {
     --tw-bg-opacity: 1;
     background-color: rgb(124 48 156 / var(--tw-bg-opacity, 1));
+  }
+}
+
+@media (min-width: 768px) {
+  .md\:text-start {
+    text-align: start;
+  }
+
+  .md\:text-lg {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
   }
 }

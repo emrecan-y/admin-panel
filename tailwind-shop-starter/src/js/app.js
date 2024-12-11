@@ -1,8 +1,7 @@
 import { initNav, navEventListenerResize } from "./nav.js";
-import { initProducts } from "./products.js";
+import { initProducts, productsEventListenerResize } from "./products.js";
 import { initDashboard } from "./dashboard.js";
 import { initProductCreation, initProductEdit } from "./product-detail.js";
-import { initConfirm } from "./confirm.js";
 
 const breakpoints = {
   sm: 640,
@@ -28,7 +27,9 @@ function injectHTML(htmlFile, element) {
 
 function injectProductList() {
   injectHTML("components/products/products.html", "#main-content").then(() =>
-    initProducts(injectProductEditView),
+    initProducts(injectProductEditView).then(() =>
+      productsEventListenerResize(breakpoints),
+    ),
   );
 }
 
@@ -65,4 +66,7 @@ injectHTML("components/nav/nav.html", "#nav").then(() =>
 );
 
 window.addEventListener("resize", () => navEventListenerResize(breakpoints));
+window.addEventListener("resize", () =>
+  productsEventListenerResize(breakpoints),
+);
 injectDashboard();
